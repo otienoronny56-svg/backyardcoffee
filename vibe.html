@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vibe | Backyard Coffee 254</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Official Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ── VIBE HERO ── */
+        .img-hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: url('assets/vibe-hero.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .img-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(15, 10, 5, 0.45) 0%,
+                    rgba(15, 10, 5, 0.2) 40%,
+                    rgba(15, 10, 5, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .vibe-hero-text {
+            position: relative;
+            z-index: 2;
+            padding: 0 5%;
+        }
+
+        .vibe-hero-text h1 {
+            font-size: clamp(3.5rem, 15vw, 8rem) !important;
+            text-shadow: clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px) 0px var(--primary-orange) !important;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .vibe-hero-text p {
+            font-size: clamp(1.2rem, 5vw, 2.2rem) !important;
+            background: rgba(0, 0, 0, 0.7);
+            padding: clamp(15px, 4vw, 20px) clamp(30px, 6vw, 60px) !important;
+            border-radius: 60px;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ── SENSORY SECTION ── */
+        .sensory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .sensory-card {
+            background: var(--white);
+            border: 3px solid var(--espresso-dark);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 8px 8px 0px var(--primary-orange);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .sensory-card h3 {
+            font-family: 'Chewy', cursive;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--espresso-dark);
+            margin-bottom: 15px;
+        }
+
+        .sensory-img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--espresso-dark);
+            box-shadow: 8px 8px 0px var(--primary-orange);
+            margin: 0 auto 20px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .sensory-card:hover .sensory-img {
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        .sensory-card p {
+            font-size: clamp(1rem, 3.5vw, 1.25rem);
+            line-height: 1.7;
+            color: #444;
+        }
+
+        /* ── VIDEO REEL GRID ── */
+        .reel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .reel-sticker {
+            position: relative;
+            border: 4px solid var(--espresso-dark);
+            box-shadow: 10px 10px 0px var(--primary-orange);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: #000;
+        }
+
+        .reel-sticker:nth-child(even) {
+            transform: rotate(1.5deg);
+        }
+
+        .reel-sticker:nth-child(odd) {
+            transform: rotate(-1.5deg);
+        }
+
+        .reel-sticker:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 10;
+        }
+
+        .reel-sticker iframe {
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            /* Perfect mobile reel format */
+            max-height: 700px;
+            display: block;
+            border: none;
+        }
+
+        .reel-label {
+            background: var(--espresso-dark);
+            color: var(--primary-orange);
+            padding: 12px 22px;
+            font-family: 'Chewy', cursive;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            border-top: 3px solid var(--primary-orange);
+            text-align: center;
+        }
+
+        /* ── GOLDEN HOUR GALLERY ── */
+        .vibe-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 60px;
+        }
+
+        .vibe-gallery-item {
+            height: 450px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 4px solid var(--white);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .vibe-gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .vibe-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ── MANIFESTO / MUSIC SECTION ── */
+        .music-section {
+            background: var(--espresso-dark);
+            padding: 120px 10%;
+            text-align: center;
+            border-top: 10px solid var(--primary-orange);
+            border-bottom: 10px solid var(--primary-orange);
+            color: var(--white);
+        }
+
+        .music-text {
+            font-family: 'Chewy', cursive;
+            font-size: clamp(2.2rem, 8vw, 4rem);
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+
+        .playlist-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: #1DB954;
+            /* Spotify Greenish */
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 900;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+        }
+
+        .playlist-badge:hover {
+            transform: scale(1.05);
+        }
+
+        .social-badges {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 200;
+        }
+
+        .ig-badge,
+        .tt-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--white);
+            padding: 12px 22px;
+            border-radius: 50px;
+            font-family: 'Chewy', cursive;
+            font-size: 1.1rem;
+            box-shadow: 5px 5px 0px var(--espresso-dark);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .ig-badge {
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+        }
+
+        .tt-badge {
+            background: #000;
+            border: 2px solid #00f2ea;
+            box-shadow: 3px 3px 0px #ff0050, 5px 5px 0px var(--espresso-dark);
+        }
+
+        .ig-badge:hover,
+        .tt-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            .social-badges {
+                bottom: 20px;
+                right: 20px;
+                gap: 10px;
+            }
+
+            .ig-badge,
+            .tt-badge {
+                padding: 10px 18px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .vibe-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .vibe-gallery-item {
+                height: 350px;
+            }
+
+            .about-hero h1 {
+                font-size: 4rem !important;
+            }
+
+            .music-text {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-pattern">
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none;">
+                <img src="assets/logo-clean.png" alt="Backyard Coffee Logo" style="height: 60px;">
+            </a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="setup.html">The Setup</a></li>
+            <li><a href="vibe.html">The Vibe</a></li>
+            <li><a href="index.html#contact" class="btn-primary">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <header class="img-hero">
+        <div class="vibe-hero-text">
+            <h1>FILTRATED ENERGY</h1>
+            <p>Real moments. Real coffee. 254 Soul. ☕️</p>
+        </div>
+    </header>
+
+    <div class="wavy-divider wavy-bottom"></div>
+
+    <!-- ── SENSORY SYMPHONY ── -->
+    <section class="bg-cream story-section">
+        <h2 class="section-title">A Sensory Symphony</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.4rem; color: #444;">It isn't just
+            about the drink. It's about the feeling in the air when we pull up.</p>
+        <div class="sensory-grid">
+            <div class="sensory-card">
+                <img src="assets/story-roast.png" alt="The Smell" class="sensory-img">
+                <h3>The Smell</h3>
+                <p>The intoxicating aroma of freshly ground Kenyan Arabica hitting hot water. Notes of dark chocolate,
+                    wine, and highland fresh air.</p>
+            </div>
+            <div class="sensory-card">
+                <img src="assets/vibe-cocktail-pour.png" alt="The Sound" class="sensory-img">
+                <h3>The Sound</h3>
+                <p>The rhythmic hiss of the steam wand, the clink of ice in a cocktail shaker, and the baseline of a
+                    curated Nairobi playlist.</p>
+            </div>
+            <div class="sensory-card">
+                <img src="assets/story-latte-art.png" alt="The Sight" class="sensory-img">
+                <h3>The Sight</h3>
+                <p>The iconic glow of our "Obsessive Coffee Disorder" neon sign and the artistic swirl of a perfectly
+                    poured rosetta.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── REELS GRID ── -->
+    <section class="bg-forest story-section" style="color: var(--white);">
+        <h2 class="section-title" style="color: var(--white);">Live Action 🎥</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.4rem; opacity: 0.9;">Watch the
+            Backyard magic in motion. These are real moments from real events.</p>
+        <div class="reel-grid">
+            <div class="reel-sticker">
+                <iframe src="https://drive.google.com/file/d/1S-riikTubci2Qqa1uLo_S2sE07JarD6U/preview" allow="autoplay"
+                    allowfullscreen></iframe>
+                <div class="reel-label">Nairobi Nights</div>
+            </div>
+            <div class="reel-sticker">
+                <iframe src="https://drive.google.com/file/d/1t_QSiiDh3AVUDeumOrJeXD0XcsTrLv_O/preview" allow="autoplay"
+                    allowfullscreen></iframe>
+                <div class="reel-label">Barista Mastery</div>
+            </div>
+            <div class="reel-sticker">
+                <iframe src="https://drive.google.com/file/d/1q-Pd-VozmUgPrEmTAYrc0c7Mmfnsp0TJ/preview" allow="autoplay"
+                    allowfullscreen></iframe>
+                <div class="reel-label">The Extraction</div>
+            </div>
+            <div class="reel-sticker">
+                <iframe src="https://drive.google.com/file/d/1fj8c0ZDZCPk9h-AYL3j4dtW3ZDaV7Y85/preview" allow="autoplay"
+                    allowfullscreen></iframe>
+                <div class="reel-label">Event Energy</div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px;">
+            <p style="font-size: 1.3rem;">+ Many more vibes shared daily on our stories.</p>
+        </div>
+    </section>
+
+    <!-- ── GOLDEN HOUR GALLERY ── -->
+    <section class="bg-cream story-section">
+        <h2 class="section-title">The Golden Hour</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.4rem; color: #444;">When the sun
+            dips and the cocktails start pouring. This is when the legend truly wakes up.</p>
+        <div class="vibe-gallery">
+            <div class="vibe-gallery-item" style="height: clamp(300px, 80vw, 450px);">
+                <img src="assets/vibe-golden-hour.png" alt="High energy outdoor event at golden hour">
+            </div>
+            <div class="vibe-gallery-item" style="height: clamp(300px, 80vw, 450px);">
+                <img src="assets/vibe-cocktail-pour.png" alt="Cinematic espresso martini pour">
+            </div>
+            <div class="vibe-gallery-item" style="height: clamp(300px, 80vw, 450px);">
+                <img src="assets/vibe-happy-crowd.png" alt="Stylish professionals enjoying the vibe">
+            </div>
+            <div class="vibe-gallery-item" style="height: clamp(300px, 80vw, 450px);">
+                <img src="assets/vibe-night-cozy.png" alt="Cozy evening lounge event vibe">
+            </div>
+        </div>
+    </section>
+
+    <!-- ── MUSIC SECTION ── -->
+    <section class="music-section">
+        <div class="music-text">
+            "Coffee is the <span style="color: var(--primary-orange);">bassline</span>. Cocktails are the <span
+                style="color: var(--primary-orange);">melody</span>. The People are the <span
+                style="color: var(--primary-orange);">soul</span>."
+        </div>
+        <p
+            style="font-size: 1.5rem; margin-bottom: 40px; opacity: 0.8; max-width: 800px; margin-left: auto; margin-right: auto;">
+            We curate the sound of every event to match the roast. From chill afro-house to late-night soul.</p>
+        <a href="https://open.spotify.com" target="_blank" class="playlist-badge">
+            <span style="font-size: 1.8rem;">🎧</span> Listen to the Backyard Playlist
+        </a>
+    </section>
+
+    <!-- ── THE AFTER GLOW ── -->
+    <section class="bg-cream story-section" style="text-align: center;">
+        <h2 class="section-title">The After-Glow</h2>
+        <p style="font-size: 1.6rem; max-width: 900px; margin: 0 auto 50px; line-height: 1.8; color: #333;">The best
+            part of any Backyard Coffee event isn't the last cup served—it's the messages we get the next morning. The
+            "thank yous", the tags in the stories, and the memories of a night that felt different.</p>
+        <div class="sticker-card sticker-circle"
+            style="max-width: clamp(280px, 90vw, 500px); margin: 0 auto; border: 8px solid var(--espresso-dark);">
+            <img src="assets/barista-action.png" alt="Barista in action">
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <div class="wavy-divider wavy-top"></div>
+    <section id="contact"
+        style="text-align: center; padding: clamp(80px, 15vw, 140px) 8%; background: var(--espresso-dark);">
+        <h2 class="section-title"
+            style="font-size: clamp(2.5rem, 10vw, 5rem); color: var(--white); margin-bottom: 20px;">Want this energy at
+            your event?</h2>
+        <p style="font-size: clamp(1.2rem, 5vw, 2rem); margin-bottom: 40px; color: var(--white); opacity: 0.9;">The vibe
+            is mobile. We'll bring it to you.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <a href="mailto:hello@backyardcoffee.co.ke" class="btn-primary"
+                style="font-size: clamp(1.2rem, 4vw, 1.8rem); padding: 20px 40px;">Request a Quote</a>
+            <a href="setup.html" class="btn-secondary"
+                style="font-size: clamp(1.2rem, 4vw, 1.8rem); padding: 20px 40px;">See the Setup</a>
+        </div>
+    </section>
+
+    <div class="social-badges">
+        <a href="https://www.tiktok.com/@thebackyardcoffee2?is_from_webapp=1&sender_device=pc" target="_blank"
+            class="tt-badge">
+            <i class="fab fa-tiktok"></i> Follow @thebackyardcoffee2
+        </a>
+        <a href="https://www.instagram.com/thebackyardcoffee254" target="_blank" class="ig-badge">
+            <i class="fab fa-instagram"></i> Follow @thebackyardcoffee254
+        </a>
+    </div>
+
+    <!-- ── FOOTER ── -->
+    <footer
+        style="background:var(--espresso-dark);padding:60px 8%;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;color:var(--white); border-top: 1px solid rgba(255,255,255,0.1);">
+        <div>
+            <h3 style="font-family:'Chewy',cursive;font-size:2rem;color:var(--primary-orange);margin-bottom:15px;">
+                BACKYARD COFFEE</h3>
+            <p style="opacity:0.7;line-height:1.8;">Kenya's premium mobile espresso bar. Bean on the grind — everywhere
+                you need us.</p>
+        </div>
+        <div>
+            <h4 style="font-family:'Chewy',cursive;font-size:1.5rem;margin-bottom:15px;color:var(--primary-orange);">
+                Navigate</h4>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+                <li><a href="index.html" style="color:var(--white);text-decoration:none;opacity:0.8;">Home</a></li>
+                <li><a href="about.html" style="color:var(--white);text-decoration:none;opacity:0.8;">Our Story</a></li>
+                <li><a href="setup.html" style="color:var(--white);text-decoration:none;opacity:0.8;">The Setup</a></li>
+                <li><a href="vibe.html" style="color:var(--white);text-decoration:none;opacity:0.8;">The Vibe</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 style="font-family:'Chewy',cursive;font-size:1.5rem;margin-bottom:15px;color:var(--primary-orange);">Get
+                in Touch</h4>
+            <p style="opacity:0.8;margin-bottom:10px;"><i class="fas fa-envelope"
+                    style="color:var(--primary-orange); margin-right: 8px;"></i> hello@backyardcoffee.co.ke</p>
+            <p style="opacity:0.8;margin-bottom:10px;"><i class="fab fa-whatsapp"
+                    style="color:var(--primary-orange); margin-right: 8px;"></i> WhatsApp: <a
+                    href="https://wa.me/254706299282"
+                    style="color:var(--primary-orange);text-decoration:none;">0706299282</a></p>
+            <p style="opacity:0.8;margin-bottom:10px;"><i class="fas fa-location-dot"
+                    style="color:var(--primary-orange); margin-right: 8px;"></i> Nairobi, Kenya</p>
+            <p style="opacity:0.8;margin-bottom:10px;"><i class="fab fa-instagram"
+                    style="color:var(--primary-orange); margin-right: 8px;"></i> <a
+                    href="https://instagram.com/thebackyardcoffee254" target="_blank"
+                    style="color:var(--primary-orange);">@thebackyardcoffee254</a></p>
+            <p style="opacity:0.8;"><i class="fab fa-tiktok"
+                    style="color:var(--primary-orange); margin-right: 8px;"></i> <a
+                    href="https://www.tiktok.com/@thebackyardcoffee2?is_from_webapp=1&sender_device=pc" target="_blank"
+                    style="color:var(--primary-orange);">@thebackyardcoffee2</a></p>
+        </div>
+        <div>
+            <h4 style="font-family:'Chewy',cursive;font-size:1.5rem;margin-bottom:15px;color:var(--primary-orange);">
+                Hours</h4>
+            <p style="opacity:0.8;margin-bottom:8px;">Mon – Fri: By Appointment</p>
+            <p style="opacity:0.8;margin-bottom:8px;">Weekends: Events & Pop-ups</p>
+            <p style="opacity:0.8;">Available 7 days for booked events</p>
+        </div>
+    </footer>
+    <div
+        style="background:#0f0a05;padding:20px 8%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;color:rgba(255,255,255,0.4);font-size:0.85rem;">
+        <span>© 2026 Backyard Coffee 254. All rights reserved. | Bean on the Grind! ☕</span>
+        <span style="opacity:0.8;">Designed & Engineered by <span
+                style="color:var(--primary-orange);font-weight:700;">Systems by Ronny</span> | 0745806488</span>
+    </div>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

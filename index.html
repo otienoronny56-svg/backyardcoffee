@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backyard Coffee 254 | Mobile Espresso & Cocktails Kenya</title>
+    <meta name="description"
+        content="Kenya's premium mobile espresso bar and cocktail experience. Book Backyard Coffee 254 for your corporate event, wedding, festival or private party.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Official Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ── COUNTER SECTION ── */
+        .stats-band {
+            background: var(--primary-orange);
+            padding: 50px 8%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .stats-band {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+                padding: 30px 5%;
+            }
+
+            .stat-item .number {
+                font-size: clamp(2.5rem, 10vw, 3.5rem);
+            }
+
+            .stat-item .label {
+                font-size: 0.8rem;
+                letter-spacing: 0;
+            }
+        }
+
+        .stat-item .number {
+            font-family: 'Chewy', cursive;
+            font-size: 4.5rem;
+            color: var(--espresso-dark);
+            line-height: 1;
+        }
+
+        .section-title {
+            font-family: 'Chewy', cursive;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin-bottom: 25px;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .stat-item .label {
+            font-size: 0.9rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--espresso-dark);
+            letter-spacing: 1px;
+        }
+
+        /* ── SERVICES GRID ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 3px solid var(--espresso-dark);
+            border-radius: 24px;
+            padding: 30px 20px;
+            /* More compact on mobile */
+            box-shadow: 7px 7px 0px var(--primary-orange);
+            color: var(--espresso-dark);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .service-card {
+                padding: 25px 15px;
+                border-radius: 20px;
+            }
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px) rotate(-1deg);
+        }
+
+        .service-icon {
+            font-size: clamp(3rem, 12vw, 4rem);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: 'Chewy', cursive;
+            font-size: clamp(1.8rem, 6vw, 2.2rem);
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* ── MENU PREVIEW ── */
+        .menu-scroll {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 30px 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .menu-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .menu-scroll::-webkit-scrollbar-thumb {
+            background: var(--primary-orange);
+            border-radius: 10px;
+        }
+
+        .menu-chip {
+            min-width: 260px;
+            scroll-snap-align: start;
+            background: var(--white);
+            border: 3px solid var(--espresso-dark);
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 5px 5px 0px var(--espresso-dark);
+            color: var(--espresso-dark);
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .menu-chip .price {
+            font-family: 'Chewy', cursive;
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+        }
+
+        .menu-chip h4 {
+            font-size: 1.3rem;
+            font-weight: 900;
+            margin: 10px 0 6px;
+        }
+
+        .menu-chip p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* ── MARQUEE BANNER ── */
+        .marquee-wrap {
+            background: var(--espresso-dark);
+            padding: 18px 0;
+            overflow: hidden;
+            border-top: 3px solid var(--primary-orange);
+            border-bottom: 3px solid var(--primary-orange);
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 60px;
+            animation: marquee 18s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0)
+            }
+
+            100% {
+                transform: translateX(-50%)
+            }
+        }
+
+        .marquee-track span {
+            font-family: 'Chewy', cursive;
+            font-size: 1.5rem;
+            color: var(--primary-orange);
+        }
+
+        .marquee-track .dot {
+            color: var(--white);
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            /* Reduced gap */
+            margin-top: 40px;
+        }
+
+        @media (max-width: 480px) {
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border: 3px solid var(--espresso-dark);
+            border-radius: 20px;
+            /* Slightly tighter radius */
+            padding: 25px 20px;
+            /* More compact padding */
+            box-shadow: 4px 4px 0px var(--primary-orange);
+            /* Slimmer shadow */
+            color: var(--espresso-dark);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-family: 'Chewy', cursive;
+            font-size: clamp(3rem, 12vw, 5rem);
+            /* Smaller quote scale */
+            color: var(--primary-orange);
+            position: absolute;
+            top: -12px;
+            left: 12px;
+            line-height: 1;
+            opacity: 0.25;
+            z-index: 1;
+        }
+
+        .testimonial-card p {
+            font-size: clamp(0.95rem, 3.8vw, 1.1rem);
+            /* Tighter font */
+            line-height: 1.5;
+            margin-bottom: 15px;
+            padding-top: 15px;
+            /* Reduced top padding */
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-card .author {
+            font-weight: 900;
+            color: var(--primary-orange);
+        }
+
+        .testimonial-card .event {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .stars {
+            color: #FFB800;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* ── EVENT TYPES ── */
+        .event-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .event-types-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 0 5%;
+            }
+        }
+
+        .event-type-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid var(--espresso-dark);
+            box-shadow: 6px 6px 0px var(--primary-orange);
+            height: 300px;
+            /* Taller on mobile for better visibility */
+            display: flex;
+            align-items: flex-end;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        @media (max-width: 480px) {
+            .event-type-card {
+                height: 220px;
+            }
+        }
+
+        .event-type-card:hover {
+            transform: scale(1.04);
+        }
+
+        .event-type-bg {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+        }
+
+        .event-type-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 20px;
+            opacity: 0.9;
+        }
+
+        .event-type-label {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(15, 8, 2, 0.92));
+            padding: 20px 20px 22px;
+            font-family: 'Chewy', cursive;
+            font-size: 1.6rem;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+
+        /* ── HOW IT WORKS ── */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .step-card {
+            padding: 40px 25px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-orange);
+            border: 3px solid var(--espresso-dark);
+            border-radius: 50%;
+            font-family: 'Chewy', cursive;
+            font-size: 2.5rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 4px 4px 0px var(--espresso-dark);
+        }
+
+        .step-card h3 {
+            font-family: 'Chewy', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .step-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            opacity: 0.85;
+        }
+
+        /* ── GALLERY STRIP ── */
+        .gallery-strip {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: 300px 300px;
+            gap: 15px;
+        }
+
+        .gallery-strip .g-main {
+            grid-row: 1 / 3;
+        }
+
+        .gallery-item {
+            border-radius: 18px;
+            overflow: hidden;
+            border: 3px solid var(--espresso-dark);
+            box-shadow: 5px 5px 0px var(--primary-orange);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-strip {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                gap: 20px;
+                padding: 0 5%;
+            }
+
+            .gallery-strip .g-main {
+                height: auto;
+                aspect-ratio: 4 / 3;
+            }
+
+            .gallery-item {
+                height: auto;
+                aspect-ratio: 16 / 9;
+            }
+        }
+
+        .gallery-item-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        /* ── FAQ ── */
+        .faq-list {
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 3px solid var(--espresso-dark);
+            border-radius: 16px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 4px 4px 0px var(--primary-orange);
+            color: var(--espresso-dark);
+        }
+
+        .faq-q {
+            padding: 22px 28px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-a {
+            padding: 0 28px 22px;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        /* ── CONTACT FORM ── */
+        .contact-form {
+            max-width: 700px;
+            margin: 50px auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-form {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 0 5%;
+            }
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            padding: 16px 20px;
+            border: 3px solid var(--espresso-dark);
+            border-radius: 14px;
+            font-size: 1rem;
+            font-family: 'Nunito', sans-serif;
+            outline: none;
+            background: var(--white);
+            color: var(--espresso-dark);
+            transition: box-shadow 0.2s;
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            box-shadow: 4px 4px 0px var(--primary-orange);
+        }
+
+        .contact-form textarea {
+            grid-column: 1/-1;
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .contact-form .submit-row {
+            grid-column: 1/-1;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .contact-form select {
+            grid-column: 1/-1;
+        }
+
+        /* ── SOCIAL PROOF LOGOS ── */
+        .logos-strip {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .logo-badge {
+            background: var(--white);
+            border: 3px solid var(--espresso-dark);
+            border-radius: 50px;
+            padding: 12px 28px;
+            font-family: 'Chewy', cursive;
+            font-size: 1.3rem;
+            color: var(--espresso-dark);
+            box-shadow: 4px 4px 0px var(--primary-orange);
+        }
+
+        /* ── INSTAGRAM TEASER ── */
+        .ig-teaser {
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+            padding: 80px 8%;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .ig-teaser h2 {
+            font-family: 'Chewy', cursive;
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .ig-teaser p {
+            font-size: 1.4rem;
+            margin-bottom: 35px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0 5%;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--espresso-dark);
+            border: 3px solid white;
+            color: white !important;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: clamp(0.95rem, 3.8vw, 1.25rem);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            /* Prevent handle wrapping */
+            box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            background: white;
+            color: var(--espresso-dark) !important;
+        }
+
+        .social-btn.tiktok:hover {
+            border-color: #ff0050;
+        }
+
+        @media (max-width: 600px) {
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── NAVBAR ── -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/logo-clean.png" alt="Backyard Coffee Logo">
+            </a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="setup.html">The Setup</a></li>
+            <li><a href="vibe.html">The Vibe</a></li>
+            <li><a href="#contact" class="btn-primary">Book Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Where Coffee Meets the Great Outdoors!</h1>
+            <p>Elevate your next event with premium espresso, craft cocktails, and the best barista vibes in Kenya. Bean
+                on the grind!</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Get an Instant Quote</a>
+                <a href="setup.html" class="btn-secondary">See Our Setup</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="wavy-divider wavy-bottom"></div>
+
+    <!-- ── STATS BAND ── -->
+    <div class="stats-band">
+        <div class="stat-item">
+            <div class="number">50+</div>
+            <div class="label">Events Served</div>
+        </div>
+        <div class="stat-item">
+            <div class="number">5K+</div>
+            <div class="label">Cups Poured</div>
+        </div>
+        <div class="stat-item">
+            <div class="number">3</div>
+            <div class="label">Mobile Setups</div>
+        </div>
+        <div class="stat-item">
+            <div class="number">100%</div>
+            <div class="label">Happy Clients</div>
+        </div>
+        <div class="stat-item">
+            <div class="number">254</div>
+            <div class="label">Born in Kenya 🇰🇪</div>
+        </div>
+    </div>
+
+    <!-- ── MARQUEE ── -->
+    <div class="marquee-wrap">
+        <div class="marquee-track">
+            <span>☕ BEAN ON THE GRIND</span><span class="dot">✦</span>
+            <span>🇰🇪 MADE IN KENYA</span><span class="dot">✦</span>
+            <span>🔥 MOBILE ESPRESSO BAR</span><span class="dot">✦</span>
+            <span>🎉 EVENTS & FESTIVALS</span><span class="dot">✦</span>
+            <span>💼 CORPORATE EVENTS</span><span class="dot">✦</span>
+            <span>💍 WEDDINGS & PARTIES</span><span class="dot">✦</span>
+            <span>☕ BEAN ON THE GRIND</span><span class="dot">✦</span>
+            <span>🇰🇪 MADE IN KENYA</span><span class="dot">✦</span>
+            <span>🔥 MOBILE ESPRESSO BAR</span><span class="dot">✦</span>
+            <span>🎉 EVENTS & FESTIVALS</span><span class="dot">✦</span>
+            <span>💼 CORPORATE EVENTS</span><span class="dot">✦</span>
+            <span>💍 WEDDINGS & PARTIES</span><span class="dot">✦</span>
+        </div>
+    </div>
+
+    <!-- ── OUR STORY TEASER ── -->
+    <section id="about" class="bg-cream">
+        <div class="split-layout">
+            <div class="sticker-img-container dancing-character" style="text-align: center; width: 100%;">
+                <img src="barista-bean.png" alt="Friendly Barista Bean" class="sticker-img"
+                    style="margin: 0 auto; max-width: 280px;">
+            </div>
+            <div class="story-text">
+                <h2 class="section-title">Born in the Heart of Kenya</h2>
+                <p style="font-size:1.2rem;margin-bottom:20px;">Backyard Coffee 254 is more than a mobile trailer — it's
+                    a community on wheels. We believe the best conversations happen over a steaming cup of Kenyan gold
+                    or a perfectly shaken cocktail.</p>
+                <p style="font-size:1.2rem;margin-bottom:20px;">Whether it's a corporate event, a wedding, or a backyard
+                    party, we bring the premium espresso experience and the ultimate Vibe right to your doorstep.</p>
+                <p style="font-size:1.2rem;margin-bottom:30px;">We source only the highest-grade <strong>Specialty
+                        Arabica beans</strong> from Kenyan highland farmers — characterized by vibrant, wine-like
+                    acidity and a full-bodied richness that is unmistakable.</p>
+                <a href="about.html" class="btn-primary">Read Our Full Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SERVICES ── -->
+    <section id="services" class="bg-forest">
+        <h2 class="section-title">What We Bring to Your Event</h2>
+        <p style="text-align:center;max-width:700px;margin:0 auto;font-size:1.2rem;opacity:0.85;">From the first
+            espresso pull to the last cocktail shaken — we've got your entire drinks experience covered.</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">☕</span>
+                <h3>Mobile Espresso</h3>
+                <p>Full-service specialty coffee bar with trained professional baristas. Flat whites, cortados, lattes,
+                    cappuccinos, cold brews — all dialled in on commercial machines.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🍹</span>
+                <h3>Craft Cocktails</h3>
+                <p>Signature cocktails and premium mocktails shaken to order. From espresso martinis to passion fruit
+                    coolers — every drink is a moment.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🎪</span>
+                <h3>Event Setup</h3>
+                <p>Our premium branded station — with neon "Obsessive Coffee Disorder" sign, full wrap, syrups, grinder
+                    and all the gear — becomes the centrepiece of your event.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🏢</span>
+                <h3>Corporate Packages</h3>
+                <p>Impress your team and clients with branded coffee service at conferences, activations, and product
+                    launches. We're the wow factor that gets people talking.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">💍</span>
+                <h3>Weddings & Private</h3>
+                <p>Make your special day unforgettable with a custom coffee experience. We handle setup, service, and
+                    teardown — you just enjoy the day.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🎨</span>
+                <h3>Custom Branding</h3>
+                <p>From branded sleeves and cups to bespoke menu boards — we can wrap our setup in your event's identity
+                    for maximum impact.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── EVENT TYPES ── -->
+    <section class="bg-cream">
+        <h2 class="section-title">We Show Up Everywhere</h2>
+        <p style="text-align:center;max-width:700px;margin:0 auto;font-size:1.2rem;color:#444;">No event is too big, too
+            small, or too unusual. If there's people — we're bringing coffee.</p>
+        <div class="event-types-grid">
+            <div class="event-type-card">
+                <div class="event-type-bg">
+                    <img src="assets/event-wedding-sketch.png" alt="Weddings Sketch" class="event-type-img">
+                </div>
+                <div class="event-type-label">Weddings</div>
+            </div>
+            <div class="event-type-card">
+                <div class="event-type-bg">
+                    <img src="assets/event-corporate-sketch.png" alt="Corporates Sketch" class="event-type-img">
+                </div>
+                <div class="event-type-label">Corporates</div>
+            </div>
+            <div class="event-type-card">
+                <div class="event-type-bg">
+                    <img src="assets/event-festival-sketch.png" alt="Festivals Sketch" class="event-type-img">
+                </div>
+                <div class="event-type-label">Festivals</div>
+            </div>
+            <div class="event-type-card">
+                <div class="event-type-bg">
+                    <img src="assets/story-social.png" alt="Graduations" class="event-type-img"
+                        style="filter: grayscale(1) contrast(1.2) brightness(1.1); opacity: 0.85;">
+                </div>
+                <div class="event-type-label">Graduations</div>
+            </div>
+            <div class="event-type-card">
+                <div class="event-type-bg">
+                    <img src="assets/event-party-sketch.png" alt="Private Parties Sketch" class="event-type-img">
+                </div>
+                <div class="event-type-label">Private Parties</div>
+            </div>
+            <div class="event-type-card">
+                <div class="event-type-bg">
+                    <img src="assets/setup-outdoor-bar.png" alt="Pop-ups & Markets" class="event-type-img"
+                        style="filter: grayscale(1) contrast(1.2) brightness(1.1); opacity: 0.85;">
+                </div>
+                <div class="event-type-label">Pop-ups & Markets</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── MENU PREVIEW ── -->
+    <section class="bg-espresso">
+        <h2 class="section-title">A Taste of the Menu</h2>
+        <p style="text-align:center;max-width:700px;margin:0 auto 10px;font-size:1.2rem;opacity:0.85;">Swipe to explore
+            what's on the bar 👉</p>
+        <div class="menu-scroll">
+            <div class="menu-chip">
+                <div style="font-size:2.5rem;">☕</div>
+                <div class="price">KES 250</div>
+                <h4>Espresso</h4>
+                <p>Pure, concentrated Kenyan Arabica. Intense, bold, unapologetic.</p>
+            </div>
+            <div class="menu-chip">
+                <div style="font-size:2.5rem;">🥛</div>
+                <div class="price">KES 350</div>
+                <h4>Flat White</h4>
+                <p>Silky microfoam poured over a double ristretto. The barista's drink.</p>
+            </div>
+            <div class="menu-chip">
+                <div style="font-size:2.5rem;">🌸</div>
+                <div class="price">KES 380</div>
+                <h4>Latte</h4>
+                <p>Smooth espresso with steamed milk and a latte art rosetta on top.</p>
+            </div>
+            <div class="menu-chip">
+                <div style="font-size:2.5rem;">🧊</div>
+                <div class="price">KES 400</div>
+                <h4>Cold Brew</h4>
+                <p>12-hour cold-steeped Kenyan beans. Smooth, low-acid, iced perfection.</p>
+            </div>
+            <div class="menu-chip">
+                <div style="font-size:2.5rem;">🍋</div>
+                <div class="price">KES 420</div>
+                <h4>Iced Lemon Ginger</h4>
+                <p>Cold espresso, fresh lemon, and ginger syrup. Refreshingly bold.</p>
+            </div>
+            <div class="menu-chip">
+                <div style="font-size:2.5rem;">🍹</div>
+                <div class="price">KES 450</div>
+                <h4>Passion Cooler</h4>
+                <p>Passion fruit, mint, lime, and soda. No alcohol — all vibe.</p>
+            </div>
+            <div class="menu-chip">
+                <div style="font-size:2.5rem;">🍸</div>
+                <div class="price">On Request</div>
+                <h4>Espresso Martini</h4>
+                <p>Our crowd-stopper. Cold espresso shaken with vodka and coffee liqueur.</p>
+            </div>
+            <div class="menu-chip">
+                <div style="font-size:2.5rem;">🎨</div>
+                <div class="price">Custom</div>
+                <h4>Signature Menu</h4>
+                <p>Have an event theme? We'll build a custom menu around your brand or vibe.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ── -->
+    <section class="bg-cream">
+        <h2 class="section-title">How It Works</h2>
+        <p style="text-align:center;max-width:700px;margin:0 auto;font-size:1.2rem;color:#444;">Booking with us is
+            stupidly simple. Here's what happens from your first message to the last cup served.</p>
+        <div class="steps-grid">
+            <div class="step-card" style="color:var(--espresso-dark)">
+                <div class="step-number">1</div>
+                <h3>You Reach Out</h3>
+                <p>Drop us a message via email or Instagram. Tell us your event type, date, guest count and location.
+                </p>
+            </div>
+            <div class="step-card" style="color:var(--espresso-dark)">
+                <div class="step-number">2</div>
+                <h3>We Build Your Quote</h3>
+                <p>We send you a tailored quote within 24hrs. No hidden fees. Everything is clear and upfront.</p>
+            </div>
+            <div class="step-card" style="color:var(--espresso-dark)">
+                <div class="step-number">3</div>
+                <h3>We Lock It In</h3>
+                <p>Confirm with a deposit and your date is locked. We handle all the planning from here.</p>
+            </div>
+            <div class="step-card" style="color:var(--espresso-dark)">
+                <div class="step-number">4</div>
+                <h3>We Show Up & Shine</h3>
+                <p>We arrive early, set up, and run a full premium coffee experience from start to finish. You enjoy the
+                    event.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── PHOTO GALLERY ── -->
+    <section class="bg-espresso">
+        <h2 class="section-title">From the Field 📸</h2>
+        <p style="text-align:center;margin-bottom:40px;font-size:1.2rem;opacity:0.85;">Moments from our events across
+            Kenya.</p>
+        <div class="gallery-strip">
+            <div class="gallery-item g-main">
+                <img src="assets/setup-full-bar.png" alt="Backyard Coffee full branded bar setup">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/setup-branded-cup.png" alt="Branded Backyard Coffee cup">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/setup-team-photo.png" alt="The Backyard Coffee crew">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/setup-outdoor-bar.png" alt="Outdoor festival setup">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/setup-espresso-machine.png" alt="Professional espresso machine">
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:40px;">
+            <a href="setup.html" class="btn-primary" style="font-size:1.2rem;padding:16px 40px;">See the Full Setup
+                →</a>
+        </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ── -->
+    <section class="bg-cream">
+        <h2 class="section-title">What People Say</h2>
+        <p style="text-align:center;max-width:700px;margin:0 auto;font-size:1.2rem;color:#444;">We let the cups speak
+            for themselves. But our clients speak for us too.</p>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>Backyard Coffee absolutely made our corporate launch. The setup was stunning, the coffee was
+                    incredible, and the team was so professional. Everyone was asking where we hired them from!</p>
+                <div class="author">Amina K.</div>
+                <div class="event">Corporate Product Launch, Nairobi</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>We had them at our wedding and it was the best decision we made. The espresso martinis were a hit at
+                    the after-party. The "Obsessive Coffee Disorder" neon sign was a conversation starter all night.</p>
+                <div class="author">Brian & Cynthia M.</div>
+                <div class="event">Wedding Reception, Karen</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>From booking to the last cup — flawless. They arrived early, set everything up beautifully, and kept
+                    the crowd energised all day. Genuine professionals who love what they do.</p>
+                <div class="author">Festival Organiser, Machakos</div>
+                <div class="event">Street Food & Music Festival</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>The cold brew and the lemon ginger espresso were out of this world. People were going back for third
+                    cups. Our team loved it — will definitely book them for every office event going forward.</p>
+                <div class="author">HR Manager, Tech Startup</div>
+                <div class="event">Team Building Day, Westlands</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── WHY US ── -->
+    <section class="bg-forest">
+        <h2 class="section-title">Why Backyard Coffee?</h2>
+        <div class="services-grid" style="margin-top:50px;">
+            <div class="service-card">
+                <span class="service-icon">🏆</span>
+                <h3>Pro-Grade Gear</h3>
+                <p>We run commercial espresso machines and professional grinders. The same equipment used in high-end
+                    speciality cafés.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🌿</span>
+                <h3>Kenyan Beans Only</h3>
+                <p>We source exclusively from Kenyan highland farms. Every cup honours the farmers behind the beans.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🎨</span>
+                <h3>Show-Stopping Setup</h3>
+                <p>Our branded bar with the iconic neon sign doesn't just serve coffee — it becomes the most
+                    photographed spot at your event.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">⚡</span>
+                <h3>Fast & High Volume</h3>
+                <p>We can serve hundreds of guests without compromising quality. Festivals, conferences, big weddings —
+                    we've handled them all.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🤝</span>
+                <h3>Reliable Team</h3>
+                <p>We show up early, set up properly, work the whole event, and leave the space clean. Professional to
+                    the last drop.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">💰</span>
+                <h3>Transparent Pricing</h3>
+                <p>Clear, itemized quotes with no surprise charges. We work within your budget and tell you exactly what
+                    you're getting.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TRUST LOGOS ── -->
+    <section class="bg-cream" style="padding:60px 8%;">
+        <h2 class="section-title" style="margin-bottom:0;">Seen at the Best Events In Kenya</h2>
+        <div class="logos-strip">
+            <div class="logo-badge">🎪 Street Food Kenya</div>
+            <div class="logo-badge">🏢 Corporate Nairobi</div>
+            <div class="logo-badge">💍 Luxury Weddings KE</div>
+            <div class="logo-badge">🎓 Campus Events</div>
+            <div class="logo-badge">🎵 Music Festivals</div>
+            <div class="logo-badge">🛍️ Pop-up Markets</div>
+        </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="bg-espresso">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-q">How far in advance should I book? <span>→</span></div>
+                <div class="faq-a">We recommend at least 2 weeks in advance for smaller events, and 4–6 weeks for large
+                    festivals or weddings. However, we do take last-minute bookings subject to availability.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">How many guests can you serve? <span>→</span></div>
+                <div class="faq-a">We can comfortably handle anywhere from 30 guests to 1,000+ depending on setup
+                    configuration. We'll recommend the right package based on your guest count.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Do you provide the equipment and staff? <span>→</span></div>
+                <div class="faq-a">Yes — 100%. We bring the machine, grinder, syrups, cups, branded setup and all the
+                    baristas. You don't need to provide anything.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Can you do non-coffee options? <span>→</span></div>
+                <div class="faq-a">Absolutely. We offer craft mocktails, passion fruit coolers, fresh lemonades, and
+                    custom non-caffeinated drinks. Just let us know your needs.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Do you travel outside Nairobi? <span>→</span></div>
+                <div class="faq-a">Yes! We have served events in Mombasa, Kisumu, Machakos and beyond. Travel costs are
+                    factored into the quote based on distance.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">What's included in the price? <span>→</span></div>
+                <div class="faq-a">Your quote includes: full setup & teardown, all equipment, branded station, Kenyan
+                    specialty beans, trained baristas, disposable cups + lids, and an agreed number of servings.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOLLOW THE VIBE ── -->
+    <div class="ig-teaser">
+        <h2>Follow the Vibe <i class="fab fa-instagram"></i></h2>
+        <p>See our latest events, reels and behind-the-scenes on socials.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/thebackyardcoffee254" target="_blank" class="social-btn">
+                <i class="fab fa-instagram" style="font-size: 1.4rem;"></i> @thebackyardcoffee254
+            </a>
+            <a href="https://www.tiktok.com/@thebackyardcoffee2?is_from_webapp=1&sender_device=pc" target="_blank"
+                class="social-btn tiktok">
+                <i class="fab fa-tiktok" style="font-size: 1.4rem;"></i> TikTok
+            </a>
+            <a href="https://wa.me/254706299282" target="_blank" class="social-btn" style="border-color: #25D366;">
+                <i class="fab fa-whatsapp" style="font-size: 1.4rem; color: #25D366;"></i> WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- ── CONTACT / BOOKING FORM ── -->
+    <section id="contact" class="bg-cream" style="text-align:center;">
+        <h2 class="section-title">Book the Vibe ☕</h2>
+        <p style="font-size:1.4rem;max-width:700px;margin:0 auto 10px;color:#444;">Ready to elevate your event? Tell us
+            what you need and we'll get back to you within 24 hours.</p>
+        <form class="contact-form" onsubmit="return handleSubmit(event)">
+            <input type="text" placeholder="Your Name *" required>
+            <input type="tel" placeholder="Phone Number *" required>
+            <input type="email" placeholder="Email Address *" required>
+            <select required>
+                <option value="" disabled selected>Event Type *</option>
+                <option>Corporate Event</option>
+                <option>Wedding</option>
+                <option>Festival / Street Food</option>
+                <option>Private Party</option>
+                <option>Graduation</option>
+                <option>Pop-up / Market</option>
+                <option>Other</option>
+            </select>
+            <input type="text" placeholder="Event Date *" required>
+            <input type="text" placeholder="Estimated Guest Count *" required>
+            <textarea placeholder="Tell us more — event location, theme, any special requests..."></textarea>
+            <div class="submit-row">
+                <button type="submit" class="btn-primary"
+                    style="font-size:1.3rem;padding:18px 50px;cursor:pointer;border:3px solid var(--espresso-dark);">Send
+                    My Booking Request 🚀</button>
+            </div>
+        </form>
+        <p style="margin-top:30px;font-size:1.1rem;color:#666;">Or email us directly: <a
+                href="mailto:hello@backyardcoffee.co.ke"
+                style="color:var(--primary-orange);font-weight:900;">hello@backyardcoffee.co.ke</a></p>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer
+        style="background:var(--espresso-dark);padding:60px 8%;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;color:var(--white);">
+        <div>
+            <h3 style="font-family:'Chewy',cursive;font-size:2rem;color:var(--primary-orange);margin-bottom:15px;">
+                BACKYARD COFFEE</h3>
+            <p style="opacity:0.7;line-height:1.8;">Kenya's premium mobile espresso bar. Bean on the grind — everywhere
+                you need us.</p>
+        </div>
+        <div>
+            <h4 style="font-family:'Chewy',cursive;font-size:1.5rem;margin-bottom:15px;color:var(--primary-orange);">
+                Navigate</h4>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+                <li><a href="index.html" style="color:var(--white);text-decoration:none;opacity:0.8;">Home</a></li>
+                <li><a href="about.html" style="color:var(--white);text-decoration:none;opacity:0.8;">Our Story</a></li>
+                <li><a href="setup.html" style="color:var(--white);text-decoration:none;opacity:0.8;">The Setup</a></li>
+                <li><a href="vibe.html" style="color:var(--white);text-decoration:none;opacity:0.8;">The Vibe</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 style="font-family:'Chewy',cursive;font-size:1.5rem;margin-bottom:15px;color:var(--primary-orange);">Get
+                in Touch</h4>
+            <p style="opacity:0.8;margin-bottom:10px;"><i class="fas fa-envelope"
+                    style="color:var(--primary-orange); margin-right: 8px;"></i> hello@backyardcoffee.co.ke</p>
+            <p style="opacity:0.8;margin-bottom:10px;"><i class="fab fa-whatsapp"
+                    style="color:var(--primary-orange); margin-right: 8px;"></i> WhatsApp: <a
+                    href="https://wa.me/254706299282"
+                    style="color:var(--primary-orange);text-decoration:none;">0706299282</a></p>
+            <p style="opacity:0.8;margin-bottom:10px;"><i class="fas fa-location-dot"
+                    style="color:var(--primary-orange); margin-right: 8px;"></i> Nairobi, Kenya</p>
+            <p style="opacity:0.8;margin-bottom:10px;"><i class="fab fa-instagram"
+                    style="color:var(--primary-orange); margin-right: 8px;"></i> <a
+                    href="https://instagram.com/thebackyardcoffee254" target="_blank"
+                    style="color:var(--primary-orange);">@thebackyardcoffee254</a></p>
+            <p style="opacity:0.8;"><i class="fab fa-tiktok"
+                    style="color:var(--primary-orange); margin-right: 8px;"></i> <a
+                    href="https://www.tiktok.com/@thebackyardcoffee2?is_from_webapp=1&sender_device=pc" target="_blank"
+                    style="color:var(--primary-orange);">@thebackyardcoffee2</a></p>
+        </div>
+        <div>
+            <h4 style="font-family:'Chewy',cursive;font-size:1.5rem;margin-bottom:15px;color:var(--primary-orange);">
+                Hours</h4>
+            <p style="opacity:0.8;margin-bottom:8px;">Mon – Fri: By Appointment</p>
+            <p style="opacity:0.8;margin-bottom:8px;">Weekends: Events & Pop-ups</p>
+            <p style="opacity:0.8;">Available 7 days for booked events</p>
+        </div>
+    </footer>
+    <div
+        style="background:#0f0a05;padding:20px 8%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;color:rgba(255,255,255,0.4);font-size:0.85rem;">
+        <span>© 2026 Backyard Coffee 254. All rights reserved. | Bean on the Grind! ☕</span>
+        <span style="opacity:0.8;">Designed & Engineered by <span
+                style="color:var(--primary-orange);font-weight:700;">Systems by Ronny</span> | 0745806488</span>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type=submit]');
+            btn.textContent = '✅ Request Sent! We\'ll be in touch within 24hrs.';
+            btn.style.background = 'var(--espresso-dark)';
+            btn.disabled = true;
+            return false;
+        }
+    </script>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

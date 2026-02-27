@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | Backyard Coffee 254</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Official Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .story-section {
+            padding: clamp(60px, 12vw, 120px) 10%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), radial-gradient(ellipse at center, #3d1f0a 0%, #1a110a 100%);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        /* Standardized Sticker Card for About Page */
+        .sticker-card {
+            width: 100%;
+            aspect-ratio: 1/1;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+            overflow: hidden;
+            /* CRITICAL: Clips the image to the shape */
+        }
+
+        .sticker-blob {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+
+        .sticker-circle {
+            border-radius: 50%;
+        }
+
+        .sticker-angled {
+            border-radius: 20px;
+            transform: rotate(-3deg);
+        }
+
+        .sticker-bespoke {
+            border-radius: 60px 20px 60px 20px;
+        }
+
+        .sticker-card img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%) scale(1.2);
+            /* Zero-gap "Beast Mode" fill */
+            pointer-events: none;
+        }
+
+        .story-grid.reverse {
+            direction: rtl;
+        }
+
+        .story-grid.reverse>* {
+            direction: ltr;
+        }
+
+        @media (max-width: 768px) {
+            .story-grid.reverse {
+                direction: ltr;
+            }
+        }
+
+        .section-number {
+            font-family: 'Chewy', cursive;
+            font-size: clamp(4rem, 15vw, 8rem);
+            color: rgba(255, 107, 53, 0.1);
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        /* ── VALUES GRID ── */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .value-card {
+            background: var(--white);
+            border: 3px solid var(--espresso-dark);
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 8px 8px 0px var(--primary-orange);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .value-img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--espresso-dark);
+            box-shadow: 8px 8px 0px var(--primary-orange);
+            margin: 0 auto 20px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover .value-img {
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        .value-card h3 {
+            font-family: 'Chewy', cursive;
+            font-size: 2rem;
+            color: var(--espresso-dark);
+            margin-bottom: 15px;
+        }
+
+        .value-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* ── TIMELINE ── */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: var(--primary-orange);
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            border: 3px solid var(--espresso-dark);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 6px 6px 0px var(--espresso-dark);
+            color: var(--espresso-dark);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            box-shadow: 6px 6px 0px var(--primary-orange);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 50%;
+            width: 24px;
+            height: 24px;
+            background: var(--white);
+            border: 4px solid var(--primary-orange);
+            border-radius: 50%;
+            z-index: 5;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -15px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -12px;
+        }
+
+        .timeline-year {
+            font-family: 'Chewy', cursive;
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 10px;
+        }
+
+        /* ── MANIFESTO ── */
+        .manifesto-section {
+            background: var(--espresso-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 150px 10%;
+            border-top: 10px solid var(--primary-orange);
+            border-bottom: 10px solid var(--primary-orange);
+        }
+
+        .manifesto-text {
+            font-family: 'Chewy', cursive;
+            font-size: 4.5rem;
+            line-height: 1.1;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-transform: uppercase;
+        }
+
+        .manifesto-highlight {
+            color: var(--primary-orange);
+        }
+
+        @media (max-width: 768px) {
+            .story-section {
+                padding: 60px 8%;
+                text-align: center;
+            }
+
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .story-grid .sticker-card {
+                height: auto !important;
+                aspect-ratio: 1/1;
+                width: 80% !important;
+                max-width: 240px;
+                /* Reduced to 240px for ultra-tight pro fit */
+                margin: 0 auto;
+            }
+
+            .story-text {
+                padding-top: 20px;
+                text-align: center !important;
+            }
+
+            .section-number {
+                font-size: clamp(3rem, 12vw, 5rem);
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                opacity: 0.05;
+            }
+
+            .about-hero h1 {
+                font-size: clamp(3.5rem, 15vw, 5rem) !important;
+                text-shadow: 4px 4px 0px var(--primary-orange);
+            }
+
+            .about-hero p {
+                font-size: 1.2rem !important;
+                padding: 15px 30px !important;
+                border-radius: 40px !important;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 0;
+                text-align: left !important;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-dot {
+                left: 18px !important;
+            }
+
+            .manifesto-text {
+                font-size: clamp(1.8rem, 8vw, 3rem);
+            }
+
+            .manifesto-section {
+                padding: 100px 8%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-pattern">
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/logo-clean.png" alt="Backyard Coffee Logo">
+            </a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="setup.html">The Setup</a></li>
+            <li><a href="vibe.html">The Vibe</a></li>
+            <li><a href="index.html#contact" class="btn-primary">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <header class="about-hero">
+        <div class="hero-content" style="padding: 0 5%;">
+            <h1
+                style="font-size: clamp(4rem, 15vw, 8rem); text-shadow: clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px) 0px var(--primary-orange); margin-bottom: 20px;">
+                The Legend
+            </h1>
+            <p
+                style="font-size: clamp(1.2rem, 5vw, 2.2rem); background: rgba(0,0,0,0.8); padding: clamp(10px, 4vw, 20px) clamp(25px, 6vw, 50px); border-radius: 60px; display: inline-block; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                Premium Espresso. Kenyan Soul.</p>
+        </div>
+    </header>
+
+    <div class="wavy-divider wavy-bottom"></div>
+
+    <!-- Chapter 1: The Vision -->
+    <section class="story-section bg-cream">
+        <div class="section-number">01</div>
+        <div class="story-grid">
+            <div class="sticker-card sticker-blob">
+                <img src="assets/story-farm.png" alt="Kenyan Coffee Farm">
+            </div>
+            <div class="story-text">
+                <h2 class="section-title" style="text-align: inherit;">The Visionary Spark</h2>
+                <p style="font-size: clamp(1.1rem, 3.5vw, 1.5rem); margin-bottom: 30px; line-height: 1.7;">Backyard
+                    Coffee 254 was born from a
+                    simple, radical observation: the most premium coffee in the world—**Kenyan Arabica**—was often
+                    harder to find in a local neighborhood than in a luxury cafe in London or New York.</p>
+                <p style="font-size: clamp(1.1rem, 3.5vw, 1.5rem); line-height: 1.7;">We decided to flip the script. In
+                    a small backyard in
+                    Nairobi, we built the first mobile prototype. Our mission was clear: **Mobile Freedom.** We wanted
+                    to bring the elite specialty coffee experience directly to the people, wherever they gather.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: OUR VALUES (THE NORTH STAR) -->
+    <section class="story-section bg-forest" style="color: var(--white);">
+        <h2 class="section-title" style="color: var(--white);">Our North Star</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.4rem; opacity: 0.9;">The internal
+            compass that guides every bean, every roast, and every event we serve.</p>
+        <div class="values-grid">
+            <div class="value-card">
+                <img src="assets/story-roast.png" alt="Uncompromising Quality" class="value-img">
+                <h3>Uncompromising Quality</h3>
+                <p>We don't settle for "good." We hunt for excellence in every extraction, sourcing only Specialty Grade
+                    beans.</p>
+            </div>
+            <div class="value-card">
+                <img src="assets/story-farmers.png" alt="Kenyan Heritage" class="value-img">
+                <h3>Kenyan Heritage</h3>
+                <p>Our coffee is a love letter to the highlands. We celebrate the farmers and the volcanic soil of the
+                    254.</p>
+            </div>
+            <div class="value-card">
+                <img src="assets/story-social.png" alt="Radical Community" class="value-img">
+                <h3>Radical Community</h3>
+                <p>We aren't just a trailer; we're a space for connection. We exist to bring people together, one cup at
+                    a time.</p>
+            </div>
+            <div class="value-card">
+                <img src="assets/trailer-hero.png" alt="Mobile Grit" class="value-img">
+                <h3>Mobile Grit</h3>
+                <p>We thrive on the move. We bring world-class precision to any field, forest, or office rooftop in the
+                    country.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 2: The Soul -->
+    <section class="story-section bg-espresso"
+        style="background: radial-gradient(ellipse at top, #2c1a0e 0%, #1a110a 60%); background-attachment: fixed;">
+        <div class="section-number" style="color: rgba(255,255,255,0.05);">02</div>
+        <div class="story-grid reverse">
+            <div>
+                <div class="sticker-card sticker-circle" style="background: var(--primary-orange);">
+                    <img src="assets/story-coffee-drop.png" alt="Coffee Essence">
+                </div>
+            </div>
+            <div class="story-text" style="direction: ltr;">
+                <h2 class="section-title" style="text-align: inherit; color: var(--primary-orange);">The DNA of 254</h2>
+                <p
+                    style="font-size: clamp(1.1rem, 3.5vw, 1.5rem); margin-bottom: 30px; color: var(--white); line-height: 1.7;">
+                    Every drop of
+                    Backyard Coffee carries the DNA of the Kenyan highlands. We source only the highest-grade
+                    **Specially Arabica beans** from regions like **Nyeri, Kirinyaga, and Embu**—where farmers treat
+                    their crops like gold.</p>
+                <p style="font-size: clamp(1.1rem, 3.5vw, 1.5rem); color: var(--white); line-height: 1.7;">Our beans are
+                    characterized by a
+                    vibrant, wine-like acidity and a full-bodied richness that is unmistakable. From the processing
+                    stations to our final roast, we honor that agricultural legacy with every single extraction.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: SUSTAINABILITY & IMPACT -->
+    <section class="story-section bg-cream">
+        <div class="story-grid">
+            <div class="story-text">
+                <h2 class="section-title" style="text-align: inherit;">Direct Impact. Direct Trade.</h2>
+                <p style="font-size: clamp(1.1rem, 3.5vw, 1.4rem); margin-bottom: 25px; line-height: 1.7;">We believe
+                    the farmer should earn
+                    more than the marketer. By working closely with local stakeholders and focusing on direct sourcing,
+                    we ensure that our growth directly translates to the prosperity of Kenyan highland families.</p>
+                <p
+                    style="font-size: clamp(1.1rem, 3.5vw, 1.4rem); line-height: 1.7; color: var(--espresso-dark); font-weight: 700;">
+                    When you
+                    drink Backyard Coffee, you are supporting a sustainable ecosystem that values the environment as
+                    much as the espresso.</p>
+            </div>
+            <div class="sticker-card sticker-angled" style="border: none;">
+                <img src="assets/story-farmers.png" alt="Kenyan Coffee Farmers">
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: THE EVOLUTION (TIMELINE) -->
+    <section class="story-section bg-pattern" style="background-color: var(--espresso-dark);">
+        <h2 class="section-title" style="color: var(--white);">The Evolution</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2021</div>
+                    <h3>The Backyard Spark</h3>
+                    <p>The first mobile prototype is hand-built in a home backyard in Nairobi. Testing begins with a
+                        single espresso machine.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2022</div>
+                    <h3>The First Vibe</h3>
+                    <p>Backyard Coffee makes its debut at local Nairobi markets. The "Vibe" community begins to grow.
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2023</div>
+                    <h3>Scaling the Movement</h3>
+                    <p>We launch our professional event units and partner with major corporate brands. 5,000+ cups
+                        served across the country.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2024</div>
+                    <h3>The Mobile Gold Standard</h3>
+                    <p>Backyard Coffee 254 becomes the industry benchmark. We expand our unit capacity and refine the
+                        "Legend" roast to perfection.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2025</div>
+                    <h3>Regional Domination</h3>
+                    <p>We launch our largest mobile trailer fleet yet and begin serving high-profile international
+                        summits and mega-festivals across East Africa.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2026</div>
+                    <h3>The Next Chapter</h3>
+                    <p>Expanding the Legend. We're introducing sustainable solar-powered brewing and bringing new
+                        tech-forward coffee experiences to every Kenyan backyard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: THE MANIFESTO -->
+    <section class="manifesto-section">
+        <div class="manifesto-text">
+            We don't just <span class="manifesto-highlight">serve coffee</span>. We deliver a <span
+                class="manifesto-highlight">movement</span>. Premium beans. Radical community. <span
+                class="manifesto-highlight">Mobile freedom</span>. This is the <span
+                class="manifesto-highlight">vibe</span>.
+        </div>
+    </section>
+
+    <!-- Chapter 3: The Setup -->
+    <section class="story-section bg-cream">
+        <div class="section-number">03</div>
+        <div class="story-grid">
+            <div class="sticker-card sticker-angled">
+                <img src="assets/story-event-setup.png" alt="Mobile Event Setup">
+            </div>
+            <div class="story-text">
+                <h2 class="section-title" style="text-align: inherit;">The Mobile Revolution</h2>
+                <p style="font-size: clamp(1.1rem, 3.5vw, 1.5rem); margin-bottom: 30px; line-height: 1.7;">Our setups
+                    are not just carts; they
+                    are **high-performance espresso laboratories on wheels**. We've engineered our units to deliver
+                    consistent, 5-star quality coffee in any environment—from a dusty festival field to a high-end
+                    corporate rooftop.</p>
+                <p style="font-size: clamp(1.1rem, 3.5vw, 1.5rem); line-height: 1.7;">We bring the heat, the pressure,
+                    and the precision gear
+                    of a world-class cafe to your doorstep. It's professional-grade equipment meeting the ultimate
+                    mobile resilience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 4: The Craft -->
+    <section class="story-section bg-espresso"
+        style="background: linear-gradient(135deg, #1a110a 0%, #2d1204 50%, #1a110a 100%); background-attachment: fixed;">
+        <div class="section-number" style="color: rgba(255,255,255,0.1);">04</div>
+        <div class="story-grid reverse">
+            <div>
+                <div class="sticker-card sticker-blob" style="transform: rotate(5deg);">
+                    <img src="assets/story-latte-art.png" alt="Master Craft">
+                </div>
+            </div>
+            <div class="story-text" style="direction: ltr;">
+                <h2 class="section-title" style="text-align: inherit; color: var(--primary-orange);">Micro-Batch Mastery
+                </h2>
+                <p
+                    style="font-size: clamp(1.1rem, 3.5vw, 1.5rem); margin-bottom: 30px; color: var(--white); line-height: 1.7;">
+                    Roasting is an
+                    art of seconds and degrees. We roast in micro-batches to ensure every bean reaches its peak
+                    potential. We don't hide the character of the bean behind a dark roast; we celebrate it.</p>
+                <p style="font-size: clamp(1.1rem, 3.5vw, 1.5rem); color: var(--white); line-height: 1.7;">Our baristas
+                    are artisans of the
+                    'pour'. From the temperature of the milk to the weight of the shot, everything is measured, tested,
+                    and tasted. That's the Backyard promise.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 5: The Lifestyle -->
+    <section class="story-section bg-cream">
+        <div class="section-number">05</div>
+        <div class="story-grid">
+            <div class="sticker-card sticker-bespoke" style="background: var(--espresso-dark);">
+                <img src="assets/story-garden-setup.png" alt="Backyard Vibe" style="opacity: 0.9;">
+            </div>
+            <div class="story-text">
+                <h2 class="section-title" style="text-align: inherit;">The Backyard Lifestyle</h2>
+                <p style="font-size: clamp(1.1rem, 3.5vw, 1.5rem); margin-bottom: 30px; line-height: 1.7;">At its core,
+                    Backyard Coffee 254 is
+                    a community. It’s about people coming together over a shared experience. We’ve turned weddings into
+                    espresso festivals and corporate launches into social highlights.</p>
+                <p style="font-size: clamp(1.1rem, 3.5vw, 1.5rem); line-height: 1.7;">We believe the best conversations
+                    happen in a relaxed,
+                    open-air environment. We provide the coffee; you provide the connection. Together, we create a vibe
+                    that can't be found anywhere else.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 6: The Hand-Off -->
+    <section class="story-section bg-forest" style="text-align: center; color: var(--white);">
+        <div class="section-number" style="color: rgba(255,255,255,0.05);">06</div>
+        <h2 class="section-title" style="color: var(--white);">A Legacy in Your Hands</h2>
+        <p style="max-width: 900px; margin: 0 auto 60px; font-size: 1.7rem; line-height: 1.8;">When we hand you a cup of
+            Backyard Coffee, it's the culmination of thousands of hours of farming, roasting, and crafting. It's a
+            hand-off from our heritage to your future.</p>
+
+        <div class="sticker-card sticker-circle" style="max-width: 600px; border: 8px solid var(--white);">
+            <img src="assets/story-hand-cup.png" alt="The Hand-Off">
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <div class="wavy-divider wavy-top"></div>
+    <section id="contact"
+        style="text-align: center; padding: clamp(60px, 12vw, 140px) 8%; background: var(--espresso-dark);">
+        <h2 class="section-title" style="font-size: clamp(2.5rem, 10vw, 5rem); color: var(--white);">Ready to be part of
+            the Legend?</h2>
+        <p style="font-size: clamp(1.2rem, 5vw, 2rem); margin-bottom: 40px; color: var(--white);">Don't just hear the
+            story. Experience it
+            at your next event.</p>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <a href="mailto:hello@backyardcoffee.co.ke" class="btn-primary"
+                style="font-size: clamp(1.1rem, 4vw, 1.5rem); padding: 20px 40px;">Request a Custom Booking</a>
+            <a href="setup.html" class="btn-secondary"
+                style="font-size: clamp(1.1rem, 4vw, 1.5rem); padding: 20px 40px;">Explore Our
+                Setups</a>
+        </div>
+    </section>
+
+    <!-- ── FOOTER (SYNCED WITH INDEX) ── -->
+    <footer
+        style="background:var(--espresso-dark);padding:60px 8%;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;color:var(--white); border-top: 1px solid rgba(255,255,255,0.1);">
+        <div>
+            <h3 style="font-family:'Chewy',cursive;font-size:2rem;color:var(--primary-orange);margin-bottom:15px;">
+                BACKYARD COFFEE</h3>
+            <p style="opacity:0.7;line-height:1.8;">Kenya's premium mobile espresso bar. Bean on the grind — everywhere
+                you need us.</p>
+        </div>
+        <div>
+            <h4 style="font-family:'Chewy',cursive;font-size:1.5rem;margin-bottom:15px;color:var(--primary-orange);">
+                Navigate</h4>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+                <li><a href="index.html" style="color:var(--white);text-decoration:none;opacity:0.8;">Home</a></li>
+                <li><a href="about.html" style="color:var(--white);text-decoration:none;opacity:0.8;">Our Story</a></li>
+                <li><a href="setup.html" style="color:var(--white);text-decoration:none;opacity:0.8;">The Setup</a></li>
+                <li><a href="vibe.html" style="color:var(--white);text-decoration:none;opacity:0.8;">The Vibe</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 style="font-family:'Chewy',cursive;font-size:1.5rem;margin-bottom:15px;color:var(--primary-orange);">Get
+                in Touch</h4>
+            <p style="opacity:0.8;margin-bottom:10px;"><i class="fas fa-envelope"
+                    style="color:var(--primary-orange); margin-right: 8px;"></i> hello@backyardcoffee.co.ke</p>
+            <p style="opacity:0.8;margin-bottom:10px;"><i class="fab fa-whatsapp"
+                    style="color:var(--primary-orange); margin-right: 8px;"></i> WhatsApp: <a
+                    href="https://wa.me/254706299282"
+                    style="color:var(--primary-orange);text-decoration:none;">0706299282</a></p>
+            <p style="opacity:0.8;margin-bottom:10px;"><i class="fas fa-location-dot"
+                    style="color:var(--primary-orange); margin-right: 8px;"></i> Nairobi, Kenya</p>
+            <p style="opacity:0.8;margin-bottom:10px;"><i class="fab fa-instagram"
+                    style="color:var(--primary-orange); margin-right: 8px;"></i> <a
+                    href="https://instagram.com/thebackyardcoffee254" target="_blank"
+                    style="color:var(--primary-orange);">@thebackyardcoffee254</a></p>
+            <p style="opacity:0.8;"><i class="fab fa-tiktok"
+                    style="color:var(--primary-orange); margin-right: 8px;"></i> <a
+                    href="https://www.tiktok.com/@thebackyardcoffee2?is_from_webapp=1&sender_device=pc" target="_blank"
+                    style="color:var(--primary-orange);">@thebackyardcoffee2</a></p>
+        </div>
+        <div>
+            <h4 style="font-family:'Chewy',cursive;font-size:1.5rem;margin-bottom:15px;color:var(--primary-orange);">
+                Hours</h4>
+            <p style="opacity:0.8;margin-bottom:8px;">Mon – Fri: By Appointment</p>
+            <p style="opacity:0.8;margin-bottom:8px;">Weekends: Events & Pop-ups</p>
+            <p style="opacity:0.8;">Available 7 days for booked events</p>
+        </div>
+    </footer>
+    <div
+        style="background:#0f0a05;padding:20px 8%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;color:rgba(255,255,255,0.4);font-size:0.85rem;">
+        <span>© 2026 Backyard Coffee 254. All rights reserved. | Bean on the Grind! ☕</span>
+        <span style="opacity:0.8;">Designed & Engineered by <span
+                style="color:var(--primary-orange);font-weight:700;">Systems by Ronny</span> | 0745806488</span>
+    </div>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
