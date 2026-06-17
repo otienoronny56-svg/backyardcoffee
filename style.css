@@ -450,7 +450,7 @@ section {
 .hero {
     min-height: 100vh;
     background-color: var(--espresso-dark);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('hero-cartoon.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('assets/setup-daytime.jpeg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
