@@ -209,7 +209,7 @@
     <!-- ── NAVBAR ── -->
     <nav class="navbar">
         <a href="index.html" class="logo">Backyard Coffee</a>
-        <div class="hamburger">
+        <div class="hamburger" id="mobile-menu">
             <i class="fas fa-bars"></i>
         </div>
         <ul class="nav-links">
@@ -323,11 +323,20 @@
 
     <script src="back-to-top.js"></script>
     <script>
-        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
 
-        hamburger.addEventListener('click', () => {
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
             navLinks.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
         });
     </script>
 </body>
