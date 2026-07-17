@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nairobi's premium mobile barista, Commercial Espresso Machines, and Backyard Coffee Roasters. We bring the 24 hour coffee shop feel to Westlands and beyond.">
+    <meta name="keywords" content="backyard coffee, 254 coffee, coffee 254 menu, coffee near me, coffee places in westlands, backyard coffee roasters, buy commercial espresso coffee machines, barista equipment, mobile coffee bar kenya">
+    <title>The Secret to Perfect Espresso Extraction | Backyard Coffee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .blog-hero {
+            padding: 150px 8% 80px;
+            background: var(--espresso-dark);
+            color: var(--white);
+            text-align: center;
+        }
+        .blog-hero h1 {
+            font-family: 'Chewy', cursive;
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--primary-orange);
+            margin-bottom: 20px;
+        }
+        .blog-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #ddd;
+        }
+
+        /* Blog Grid Styles */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            padding: 80px 8%;
+            background: var(--cream-bg);
+        }
+        .blog-card {
+            background: var(--white);
+            border: 3px solid var(--espresso-dark);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 6px 6px 0px var(--primary-orange);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        .blog-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--espresso-dark);
+        }
+        .blog-card-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-date {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .blog-card h3 {
+            font-family: 'Chewy', cursive;
+            font-size: 1.8rem;
+            color: var(--espresso-dark);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        .blog-card p {
+            color: #555;
+            margin-bottom: 25px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+        .btn-read-more {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 3px solid var(--espresso-dark);
+            border-radius: 30px;
+            color: var(--espresso-dark);
+            font-weight: 900;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+        .btn-read-more:hover {
+            background: var(--primary-orange);
+            border-color: var(--primary-orange);
+            color: var(--white);
+        }
+
+        /* Individual Article Styles */
+        .article-content {
+            max-width: 800px;
+            margin: -50px auto 80px;
+            background: var(--white);
+            padding: 60px;
+            border: 3px solid var(--espresso-dark);
+            border-radius: 20px;
+            box-shadow: 8px 8px 0px var(--primary-orange);
+            position: relative;
+            z-index: 10;
+        }
+        .article-content h2 {
+            font-family: 'Chewy', cursive;
+            font-size: 2.2rem;
+            color: var(--espresso-dark);
+            margin: 40px 0 20px;
+        }
+        .article-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 25px;
+        }
+        .article-content img {
+            width: 100%;
+            border-radius: 12px;
+            border: 3px solid var(--espresso-dark);
+            margin: 30px 0;
+        }
+        .article-hero {
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .article-hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(44, 25, 17, 0.6);
+        }
+        .article-hero-content {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+        }
+        .article-hero-content h1 {
+            font-family: 'Chewy', cursive;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--white);
+            text-shadow: 2px 2px 0px var(--espresso-dark);
+            margin-bottom: 15px;
+        }
+        .article-hero-content .blog-date {
+            color: var(--primary-orange);
+            font-size: 1.1rem;
+        }
+
+        /* More from the blog */
+        .related-posts {
+            padding: 80px 8%;
+            background: var(--espresso-dark);
+        }
+        .related-posts h2 {
+            font-family: 'Chewy', cursive;
+            font-size: 3rem;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .article-content {
+                margin-top: -30px;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-82NNW18519"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){{dataLayer.push(arguments);}}
+      gtag('js', new Date());
+
+      gtag('config', 'G-82NNW18519');
+    </script>
+</head>
+<body class="bg-cream">
+
+    <!-- ── NAVBAR ── -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">Backyard Coffee</a>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="setup.html">The Setup</a></li>
+            <li><a href="vibe.html">The Vibe</a></li>
+            <li><a href="machines.html">Machines</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+        </ul>
+        <a href="index.html#contact" class="nav-btn">Book Now</a>
+    </nav>
+
+    <!-- ── ARTICLE HERO ── -->
+    <header class="article-hero" style="background-image: url('assets/blog/blog-1.png');">
+        <div class="article-hero-content">
+            <span class="blog-date">March 12, 2024</span>
+            <h1>The Secret to Perfect Espresso Extraction</h1>
+        </div>
+    </header>
+
+    <!-- ── ARTICLE CONTENT ── -->
+    <main class="article-content">
+        
+    <p>Pulling the perfect shot of espresso is both an art and a science. It requires precision, practice, and the right equipment. Here at Backyard Coffee, we use high-end commercial espresso machines to ensure every drop counts. But what exactly goes into that golden crema?</p>
+    <h2>The Golden Ratio</h2>
+    <p>The standard ratio for a traditional espresso is 1:2. This means for every 1 gram of dry coffee, you aim for 2 grams of liquid espresso. Weighing your beans before grinding and weighing your shot as it pulls is the fastest way to improve your home brewing.</p>
+    <h2>Temperature and Pressure</h2>
+    <p>We supply commercial machines precisely because they maintain perfect temperature stability. A fluctuation of just a few degrees can turn a sweet, balanced shot into something incredibly sour or bitter. 9 bars of pressure and water at exactly 93°C is the sweet spot.</p>
+    <p><strong>Want to brew like a pro?</strong> Check out our <a href="machines.html" style="color:var(--primary-orange); font-weight:bold;">Machines</a> page to see the exact equipment we use and sell.</p>
+
+    </main>
+
+    <!-- ── RELATED POSTS ── -->
+    <section class="related-posts">
+        <h2>More From The Blog</h2>
+        <div class="related-grid">
+            
+            <article class="blog-card">
+                <img src="assets/blog/blog-2.png" alt="Mobile Coffee Bar">
+                <div class="blog-card-content">
+                    <span class="blog-date">February 28, 2024</span>
+                    <h3>Why Mobile Coffee Bars are the Future of Events</h3>
+                    <a href="blog-post-2.html" class="btn-read-more">Read More</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <img src="assets/blog/blog-3.png" alt="Roasting Beans">
+                <div class="blog-card-content">
+                    <span class="blog-date">January 15, 2024</span>
+                    <h3>The Journey of the Bean: Roasting Secrets</h3>
+                    <a href="blog-post-3.html" class="btn-read-more">Read More</a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+    
+    <!-- ── FOOTER ── -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="footer-logo">Backyard Coffee</a>
+                <p>Nairobi's premier mobile barista service. Bringing the 24 hour coffee shop feel to your events, offices, and film sets.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="setup.html">The Setup</a></li>
+                    <li><a href="machines.html">Commercial Machines</a></li>
+                    <li><a href="blog.html">The Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> hello@backyardcoffee.co.ke</li>
+                    <li><i class="fas fa-phone"></i> +254 700 000 000</li>
+                    <li><i class="fab fa-whatsapp"></i> WhatsApp Us</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Westlands, Nairobi</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Follow The Vibe</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Backyard Coffee. All rights reserved. Built with ❤️ in Nairobi.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+    <script src="back-to-top.js"></script>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
